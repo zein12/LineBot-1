@@ -5,14 +5,17 @@
     $url  =  "https://trialbot-api.line.me/v1/profiles?mids={$channelMID}" ; 
     $headers = array(
       "Content-Type: application/json; charser=UTF-8",
+      "Access-Control-Allow-Origin: *",
       "X-Line-ChannelID: " . $channelID,
       "X-Line-ChannelSecret: " . $channelSecret,
       "X-Line-Trusted-User-With-ACL: " . $channelMID
     );
     
     $ch = curl_init($url);
+		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 		$result = curl_exec($ch);
 		curl_close($ch);
 
