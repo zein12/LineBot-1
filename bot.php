@@ -49,22 +49,10 @@ function botmain($json){
   }
 }
     */
- 
+/* 
 
-function getallheaders()
-{
-    $headers = '';
-    foreach ($_SERVER as $name => $value) {
-        if (substr($name, 0, 5) == 'HTTP_') {
-            $headers[strtoupper(str_replace(' ', '-', ucwords(str_replace('_', ' ', substr($name, 5)))))] = $value;
-        }
-    }
-    return $headers;
-}
-  
 $access_token = '/uRUSV5cXcYdnAjK7n16+BE9EavYwZay0E3zYt340wH+E3J95IwzSPT++IDf6tHTxHlDW1Az0IVwi7pqjfIAza+J0qRA+7+1nzAIZN1JEx1Ly8KSNXXY1pKm8VFpWLbdNy3iwH6cH4fchucMF16kNAdB04t89/1O/w1cDnyilFU=';
 
-$headers = getallheaders();
 // Get POST body content
 $content = file_get_contents('php://input');
 // Parse JSON
@@ -76,14 +64,14 @@ if (!is_null($events['events'])) {
 		// Reply only when message sent is in 'text' format
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent
-			$text = $event['message']['text'];
+			$text = $tevent['message']['text'];
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 
 			// Build message to reply back
 			$messages = [
 				'type' => 'text',
-				'text' => $text." ".json_encode($events).", headers: ".$headers['X-LINE-CHANNELSIGNATURE']
+				'text' => $text." ".json_encode($events)
 			];
 
 			// Make a POST Request to Messaging API to reply to sender
@@ -108,3 +96,24 @@ if (!is_null($events['events'])) {
 		}
 	}
 }
+ */
+ 
+$channelID = "1488211839"; 
+$channelSecret = "3eec2a0e5a022b191d8f90330fbcaa20"; 
+$channelMID = "uf714a5b008cca057a4cb8cf7c0cb2e6c";  
+$url = 'https://trialbot-api.line.me/v1/profiles';
+
+$headers = array(
+      "Content-Type: application/json; charser=UTF-8",  
+      "X-Line-ChannelID: " . $channelID,
+      "X-Line-ChannelSecret: " . $channelSecret,
+      "X-Line-Trusted-User-With-ACL: " . $channelMID
+    ); 
+$ch = curl_init($url);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+$result = curl_exec($ch);
+curl_close($ch);
+
+echo $result;
