@@ -101,7 +101,7 @@ if (!is_null($events['events'])) {
 $channelID = "1488211839"; 
 $channelSecret = "3eec2a0e5a022b191d8f90330fbcaa20"; 
 $channelMID = "uf714a5b008cca057a4cb8cf7c0cb2e6c";  
-$url = 'https://trialbot-api.line.me/v1/profiles';
+$url = 'https://api.line.me/v1/profiles';
 
 $headers = array(
       "Content-Type: application/json; charser=UTF-8",  
