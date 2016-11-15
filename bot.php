@@ -83,7 +83,7 @@ if (!is_null($events['events'])) {
 			// Build message to reply back
 			$messages = [
 				'type' => 'text',
-				'text' => $text." ".json_encode($events).", headers: ".json_encode($headers)
+				'text' => $text." ".json_encode($events).", headers: ".$headers['X-LINE-CHANNELSIGNATURE']
 			];
 
 			// Make a POST Request to Messaging API to reply to sender
