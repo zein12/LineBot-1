@@ -4,16 +4,15 @@ $access_token = '/uRUSV5cXcYdnAjK7n16+BE9EavYwZay0E3zYt340wH+E3J95IwzSPT++IDf6tH
 // Get POST body content
 $content = file_get_contents('php://input');
 // Parse JSON
-$events = json_decode($content, true);
-$data_encode = json_encode($events);
+//$events = json_decode($content, true);
 //echo  $data_encode;
 // Validate parsed JSON data
-
+   /*
 if (!is_null($events['events'])) {
 	// Loop through each event
 	foreach ($events['events'] as $event) {
 		// Reply only when message sent is in 'text' format
-		//if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
+		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent
 			$text = $event['message']['text'];
 			// Get replyToken
@@ -44,8 +43,25 @@ if (!is_null($events['events'])) {
 			curl_close($ch);
 
 			echo $result . "\r\n". json_encode($events);
-		//}
+		}
 	}
 }
-    
-echo "OK";
+  */  
+//echo "OK";
+$json = json_decode($content, true);
+ foreach ($json[ 'result'] as $result) {
+    $content = $result[ 'content'];
+    if ($result[ 'eventType'] == '138311609100106403') {
+        // Join a friend or blocked
+        $mid = $content['params'][0];
+        if ($content[ 'opType'] == 4) {
+            echo 'Add as friend' $mid;
+        }
+        if ($content [ 'opType'] == 8) {
+            echo 'blockade' $mid;
+        }
+       
+    }else if ($result[ 'eventType'] == '138311609000106303') {
+           echo '55555555';
+    }
+}
