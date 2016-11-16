@@ -67,20 +67,17 @@ if (!is_null($events['events'])) {
 			// Get text sent
 			$text = $event['message']['text'];
 			// Build message to reply back
-			$messages = [
-        {
+			$messages = [        
         'type' => 'text',
-				'text' => $text." ".json_encode($events)
-        }
+				'text' => $text." ".json_encode($events)       
 			];   	
 			
 		} else if ($event['type'] == 'message' && $event['message']['type'] == 'sticker') {  
          // Build message to reply back
-  			$messages = [{
+  			$messages = [
   				'type' => 'sticker',
   				'packageId' => "3",
-          'stickerId' => "183"
-          }
+          'stickerId' => "183"            
   			];  
   		  
     }
