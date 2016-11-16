@@ -108,16 +108,13 @@ if (!is_null($events['events'])) {
     }     
    // Make a POST Request to Messaging API to reply to sender   
     if (!is_null($messages)) {
-    /*
+    
       $data = [
 				'replyToken' => $replyToken,
 				'messages' => [$messages],
 			];
-			*/
-       $data = array(
-				'replyToken' => $replyToken,
-				'messages' => array($messages),
-			);
+		
+       
     }else{
         $messages = [
   				'type' => 'sticker',
