@@ -61,6 +61,6 @@ $actions =  [{
 				'messages' => [$messages],
 			];
       */
-      $post = json_encode($actions);
+      $post = $actions;
       
       echo $post;
