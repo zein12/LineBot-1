@@ -80,6 +80,12 @@ if (!is_null($events['events'])) {
           'stickerId' => "183"            
   			];  
   		  
+    }  else {
+    	$messages = [
+  				'type' => 'sticker',
+  				'packageId' => "1",
+          'stickerId' => "5"            
+  			];  
     }
     
     
