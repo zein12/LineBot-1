@@ -43,7 +43,7 @@ $actions =  [{
          }
       ];
       
-      
+       /*
       $messages = [        
         'type' => 'template',
 				'allText' => 'this is an template',
@@ -55,12 +55,12 @@ $actions =  [{
         },
         
 			];
-       /*
+      
       $data = [
 				'replyToken' => 'replyToken',
 				'messages' => [$messages],
 			];
       */
-      $post = json_encode($messages);
+      $post = json_encode($actions);
       
       echo $post;
