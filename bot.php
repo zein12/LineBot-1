@@ -67,11 +67,9 @@ if (!is_null($events['events'])) {
 			// Get text sent
 			$text = $event['message']['text'];
 			// Build message to reply back
-			$messages = [{
-				'type' => 'text',
-				'text' => "hi"
-        },
-        {'type' => 'text',
+			$messages = [
+        {
+        'type' => 'text',
 				'text' => $text." ".json_encode($events)
         }
 			];   	
