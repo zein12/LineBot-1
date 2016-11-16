@@ -81,7 +81,7 @@ if (!is_null($events['events'])) {
           },
           {
           'type' => 'text',
-				  'text' => $text." ".json_encode($events)
+				  'text' => "Hi ---> ".json_encode($events)
           }
   			];  
   		  
