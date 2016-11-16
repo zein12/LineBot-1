@@ -65,11 +65,25 @@ if (!is_null($events['events'])) {
 		// Reply only when message sent is in 'text' format
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent
+      /*
 			$text = $event['message']['text'];
 			// Build message to reply back
 			$messages = [        
         'type' => 'text',
 				'text' => $text." ".json_encode($events)       
+			]; 
+      */
+      $actions = [
+         'type' => 'postback',
+         'label' => "test button postback"
+         'data' => "item=123"
+      ];
+      $messages = [        
+        'type' => 'buttons',
+				'thumbnailImageUrl' => '',
+        'title' => 'test button',
+        'text' =>  $event['message']['text'],
+        'actions' => [$actions]   
 			];   	
 			
 		} else if ($event['type'] == 'message' && $event['message']['type'] == 'sticker') {  
@@ -80,9 +94,13 @@ if (!is_null($events['events'])) {
           'stickerId' => "183"            
   			];  
   		  
-    }
-    
-    
+    } else if ($event['type'] == 'message' && $event['message']['type'] == 'postback') {
+        $messages = [
+  				'type' => 'postback',
+          'replyToken' => $replyToken,
+  				'postback.data' => "33333333".json_encode($events)            
+  			]; 
+    }     
    // Make a POST Request to Messaging API to reply to sender   
     if (!is_null($messages)) {
       $data = [
