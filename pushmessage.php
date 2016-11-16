@@ -4,10 +4,10 @@ $access_token = '/uRUSV5cXcYdnAjK7n16+BE9EavYwZay0E3zYt340wH+E3J95IwzSPT++IDf6tH
 $url = 'https://api.line.me/v2/bot/message/push';
 $messages = [
 				'type' => 'text',
-				'text' => "test send message push"
+				'text' => "Hello"
 			];
 $data = [
-	'to' => "Uc23982bf348aa387c2b73bcb2051a709",
+	'to' => "uf714a5b008cca057a4cb8cf7c0cb2e6c",
 	'messages' => [$messages],
 ];
 $post = json_encode($data);
