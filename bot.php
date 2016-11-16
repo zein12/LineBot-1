@@ -80,12 +80,6 @@ if (!is_null($events['events'])) {
           'stickerId' => "183"            
   			];  
   		  
-    }  else {
-    	$messages = [
-  				'type' => 'sticker',
-  				'packageId' => "1",
-          'stickerId' => "5"            
-  			];  
     }
     
     
@@ -95,7 +89,20 @@ if (!is_null($events['events'])) {
 				'replyToken' => $replyToken,
 				'messages' => [$messages],
 			];
-			$post = json_encode($data);
+			
+    }else{
+        $messages = [
+  				'type' => 'sticker',
+  				'packageId' => "1",
+          'stickerId' => "5"            
+  			];  
+        $data = [
+				'replyToken' => $replyToken,
+				'messages' => [$messages],
+			];
+    }
+    
+      $post = json_encode($data);
 			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
 
 			$ch = curl_init($url);
@@ -108,6 +115,5 @@ if (!is_null($events['events'])) {
 			curl_close($ch);
 
 			echo $result . "\r\n";
-    }
 	}
 }
