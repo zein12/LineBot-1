@@ -73,18 +73,26 @@ if (!is_null($events['events'])) {
 				'text' => $text." ".json_encode($events)       
 			]; 
       */
-      $actions = [
-         'type' => 'postback',
-         'label' => "test button postback"
-         'data' => "item=123"
+      $actions =  [{
+         'type' : 'postback',
+         'label' :"test button postback"
+         'data' : "item=123"
+         }
       ];
-      $messages = [        
-        'type' => 'buttons',
-				'thumbnailImageUrl' => '',
-        'title' => 'test button',
-        'text' =>  $event['message']['text'],
-        'actions' => [$actions]   
-			];   	
+      
+      
+      $messages = {        
+        'type' : 'template',
+				'allText' : 'this is an template',
+        'template' : {
+           'type' : 'buttons',
+    				'thumbnailImageUrl' : 'http://1.bp.blogspot.com/_VChD0TN44Cc/S8nYSoHXeQI/AAAAAAAAIrg/frnUGRABF2w/s400/3.1.jpg',
+            'title' : 'test button',
+            'text' :  $event['message']['text'],
+            'actions' => $actions  
+        },
+        
+			};   	 	
 			
 		} else if ($event['type'] == 'message' && $event['message']['type'] == 'sticker') {  
          // Build message to reply back
