@@ -74,10 +74,15 @@ if (!is_null($events['events'])) {
 			
 		} else if ($event['type'] == 'message' && $event['message']['type'] == 'sticker') {  
          // Build message to reply back
-  			$messages = [
+  			$messages = [{
   				'type' => 'sticker',
   				'packageId' => "3",
           'stickerId' => "183"
+          },
+          {
+          'type' => 'text',
+				  'text' => $text." ".json_encode($events)
+          }
   			];  
   		  
     }
