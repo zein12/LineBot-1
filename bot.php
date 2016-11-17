@@ -96,11 +96,11 @@ if (!is_null($events['events'])) {
 			];        	 	
 			 */
       $text = $event['message']['text'];
-      $actionBtn = [
+      $actionBtn = [{
           'type' => 'message',
          'label' =>"test postback",
          'text' => "ok" 
-      ]
+         }]
 			// Build message to reply back
 			$messages = [        
         'type' => 'confirm',
