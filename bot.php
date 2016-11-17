@@ -136,7 +136,7 @@ if (!is_null($events['events'])) {
       "replyToken":$replyToken,
       "messages":[{
         "type":"template",
-        "allText":"this is an template",
+        "altText":"this is an template",
         "template":{
             "type":"buttons",
             "thumbnailImageUrl":"http:\/\/1.bp.blogspot.com\/_VChD0TN44Cc\/S8nYSoHXeQI\/AAAAAAAAIrg\/frnUGRABF2w\/s400\/3.1.jpg",
