@@ -20,7 +20,7 @@ if (!is_null($events['events'])) {
       
 			$text = $event['message']['text'];
       
-      $messages_view = [        
+      $messages = [        
         'type' => 'text',
 				'text' => $text       
 			]; 
@@ -115,7 +115,12 @@ if (!is_null($events['events'])) {
 				'messages' => [$messages],
 			];
     }   
-        
+        replyMessage($data, $access_token);
+      
+	}
+}
+
+function replyMessage($data, $access_token) {
       $url = 'https://api.line.me/v2/bot/message/reply';
       $post = json_encode($data);
 			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
@@ -129,7 +134,6 @@ if (!is_null($events['events'])) {
 			$result = curl_exec($ch);
 			curl_close($ch);
 
-			echo $result . "\r\n";
-	}
+			echo $result . "\r\n";    
 }
 
