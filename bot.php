@@ -111,9 +111,8 @@ if (!is_null($events['events'])) {
               }]}
        */
        $actions_view = array(
-        		'type' => 'uri',
-            'label' =>'View detail',
-            'uri': 'http://s1.tsuki-board.net/pics/figure/big/69686.jpg?t=1340402295' 
+        		'type' => 'uri' ,
+            'label' =>'View detail'
         	);
        
        $template_view = [
