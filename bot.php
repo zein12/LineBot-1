@@ -91,7 +91,7 @@ if (!is_null($events['events'])) {
             'actions' => [{
                  'type' => 'uri',
                  'label' =>'View detail',
-                 'uri': 'http://s1.tsuki-board.net/pics/figure/big/69686.jpg?t=1340402295' 
+                 'uri'=> 'http://s1.tsuki-board.net/pics/figure/big/69686.jpg?t=1340402295' 
               }]
       }];
       $template_view = array(
@@ -112,7 +112,8 @@ if (!is_null($events['events'])) {
        */
        $actions_view = array(
         		'type' => 'uri' ,
-            'label' =>'View detail'
+            'label' =>'View detail',
+            'uri'=> 'http://s1.tsuki-board.net/pics/figure/big/69686.jpg?t=1340402295'
         	);
        
        $template_view = [
