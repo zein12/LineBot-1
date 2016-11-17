@@ -1,5 +1,5 @@
 <?php 
-$access_token = '/uRUSV5cXcYdnAjK7n16+BE9EavYwZay0E3zYt340wH+E3J95IwzSPT++IDf6tHTxHlDW1Az0IVwi7pqjfIAza+J0qRA+7+1nzAIZN1JEx1Ly8KSNXXY1pKm8VFpWLbdNy3iwH6cH4fchucMF16kNAdB04t89/1O/w1cDnyilFU=';  
+ 
 // Get POST body content
 $content = file_get_contents('php://input');
 // Parse JSON
@@ -12,7 +12,14 @@ if (!is_null($events['events'])) {
       $replyToken = $event['replyToken']; 
        // add friend
       if($event['type'] == 'follow') {
-       
+         /*
+         {"events":[
+          {"type":"follow",
+          "replyToken":"2b34541c919a46179f4f81e3b9ea6588",
+          "source":{"userId":"Uc23982bf348aa387c2b73bcb2051a709","type":"user"},
+          "timestamp":1479374241667}]}
+      */
+      
        // Reply only when message sent 
 		  } else if($event['type'] == 'message') {
          
@@ -58,18 +65,59 @@ if (!is_null($events['events'])) {
                     'stickerId' => "5"            
             			]; 
                   break;
+                        
+              replyMessage($replyToken, $messages);
           }
       
       
       // action postback
       } else if($event['type'] == 'postback') {
+      
+        /*
+        {"events":[
+      {"type":"postback",
+      "replyToken":"2b34541c919a46179f4f81e3b9ea6588",
+      "source":{"userId":"Uc23982bf348aa387c2b73bcb2051a709","type":"user"},
+      "timestamp":1479374241667,
+      "postback":{"data":"action=buy&itemid=123"}}]} 
+      */
+      
+          $messages = [        
+            'type' => 'text',
+    				'text' => $event['postback']['data']    
+    			];
+          
+          replyMessage($replyToken, $messages); 
+          
+      // join
+      } else if($event['type'] == 'join') {
+           /*
+           {"events":[{"type":"join","replyToken":"26c5f7246f83406aa99bb5a3942462f4","source":{"roomId":"R7d08cea0c50156edd625aadaf9ee6bd1","type":"room"},"timestamp":1479378196834}]}
+           */
       }
       
-      if($is_reply) {
       
-      }
   }
 }
 
-funtion reply_message(){
+function replyMessage($replyToken, $data_messages) {
+      $access_token = '/uRUSV5cXcYdnAjK7n16+BE9EavYwZay0E3zYt340wH+E3J95IwzSPT++IDf6tHTxHlDW1Az0IVwi7pqjfIAza+J0qRA+7+1nzAIZN1JEx1Ly8KSNXXY1pKm8VFpWLbdNy3iwH6cH4fchucMF16kNAdB04t89/1O/w1cDnyilFU='; 
+      $url = 'https://api.line.me/v2/bot/message/reply';
+      $data = [
+        				'replyToken' => $replyToken,
+        				'messages' => [$data_messages],
+        			];
+      $post = json_encode($data);
+			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+
+			$ch = curl_init($url);
+			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+			$result = curl_exec($ch);
+			curl_close($ch);
+
+			echo $result . "\r\n";    
 }
