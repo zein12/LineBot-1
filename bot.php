@@ -63,7 +63,7 @@ if (!is_null($events['events'])) {
 	foreach ($events['events'] as $event) {
       $replyToken = $event['replyToken'];
 		// Reply only when message sent is in 'text' format
-    /*
+   
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent
     
@@ -73,7 +73,7 @@ if (!is_null($events['events'])) {
         'type' => 'text',
 				'text' => $text." ".json_encode($events)       
 			]; 
-     
+       /*
       $actions =  [
          'type' => 'postback',
          'label' =>"test postback",
@@ -91,9 +91,9 @@ if (!is_null($events['events'])) {
       $messages = [        
         'type' => 'template',
 				'altText' => 'this is an template',
-        'template' => [$template],
-        
-			];   	 	
+        'template' => [$template],         
+			];  
+      */ 	 	
 			
 		} else if ($event['type'] == 'message' && $event['message']['type'] == 'sticker') {  
          // Build message to reply back
@@ -128,8 +128,9 @@ if (!is_null($events['events'])) {
 				'messages' => [$messages],
 			];
     }
-    */
-      $post = {
+    
+      
+      /* $post = {
       "replyToken":$replyToken,
       "messages":[{
         "type":"template",
@@ -143,7 +144,9 @@ if (!is_null($events['events'])) {
             }
           }]
         };
-      //$post = json_encode($data);
+        */
+        
+      $post = json_encode($data);
 			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
 
 			$ch = curl_init($url);
