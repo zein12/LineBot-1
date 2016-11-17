@@ -98,12 +98,7 @@ if (!is_null($events['events'])) {
        $messages_view = [        
         'type' => 'template',
 				'altText' => 'this is an template',
-        'template' => {
-            'type' => 'buttons',
-    				'thumbnailImageUrl' => 'https://innova-linebot.herokuapp.com/69686.jpg',
-            'title' => 'title',
-            'text' =>  'test'
-      }];
+        ];
       $data_view = [
 				'replyToken' => $replyToken,
 				'messages' => [$messages_view],
