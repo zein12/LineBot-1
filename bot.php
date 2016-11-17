@@ -94,22 +94,9 @@ if (!is_null($events['events'])) {
                  'uri'=> 'http://s1.tsuki-board.net/pics/figure/big/69686.jpg?t=1340402295' 
               }]
       }];
-      $template_view = array(
-                'type: buttons',
-                'thumbnailImageUrl: https://innova-linebot.herokuapp.com/69686.jpg'
-             );
-             
-             {"replyToken":"fe673105cbe2497cb23f7e536c3e2a19",
-             "messages":[
-             {
-             "type":"template",
-             "altText":"this is an template",
-             "template":{
-                "type":"buttons",
-                "actions":[{"03-13-2012":"Jazz"}]
-              }
-              }]}
+      
        */
+       
        $actions_view = array(
         		'type' => 'uri' ,
             'label' =>'View detail',
@@ -123,11 +110,12 @@ if (!is_null($events['events'])) {
          'text' =>  'test',
         'actions' => [$actions_view]
         ];
-       $messages_view = [        
+       $messages = [        
         'type' => 'template',
 				'altText' => 'this is an template',
         'template' => $template_view
         ];
+        /*
       $data_view = [
 				'replyToken' => $replyToken,
 				'messages' => [$messages_view],
@@ -138,6 +126,7 @@ if (!is_null($events['events'])) {
 				'text' => $text." ".json_encode($data_view)       
 			]; 
         
+      */
         /*
       $actions =  [
          'type' => 'uri',
