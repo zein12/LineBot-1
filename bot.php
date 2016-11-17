@@ -83,20 +83,13 @@ if (!is_null($events['events'])) {
             'type' => 'text',
     				'text' => $event['postback']['data']    
     			]; 
-    }else{
-        	$messages = [        
+    } else {        
+        $messages = [        
             'type' => 'text',
-    				'text' => $text." ".json_encode($events)       
-    			]; 
-    } 
-    /*else if ($event['type'] == 'message' && $event['message']['type'] == 'postback') {
-        $messages = [
-  				'type' => 'postback',
-          'replyToken' => $replyToken,
-  				'postback.data' => "33333333".json_encode($events)            
-  			]; 
-    } 
-    */    
+    				'text' => json_encode($events)    
+    			];
+    }
+    
    // Make a POST Request to Messaging API to reply to sender   
     if (!is_null($messages)) {
       $data = [
