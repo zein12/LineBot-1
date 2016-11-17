@@ -99,10 +99,14 @@ if (!is_null($events['events'])) {
                 'thumbnailImageUrl: https://innova-linebot.herokuapp.com/69686.jpg'
              );
        */
-       $actions_view = array(
-                'type: buttons',
-                'thumbnailImageUrl: https://innova-linebot.herokuapp.com/69686.jpg'
-             );
+       $actions_view = array( 	
+        	array(
+        		'03-13-2012' => 'Jazz'
+        	),
+        	array(
+        		'07-19-2012' => 'Pop'
+        	)
+        );
        
        $template_view = [
         'type' => 'buttons',
