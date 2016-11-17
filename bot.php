@@ -8,7 +8,7 @@ $content = file_get_contents('php://input');
 // Parse JSON
 $events = json_decode($content, true);  
 // Validate parsed JSON data
-
+if (!is_null($events['events'])) {
   $url = 'https://api.line.me/v2/bot/message/reply';
 	// Loop through each event
 	foreach ($events['events'] as $event) {
@@ -44,8 +44,8 @@ $events = json_decode($content, true);
        $template_view = [
         'type' => 'buttons',
         'thumbnailImageUrl' => 'https://innova-linebot.herokuapp.com/69686.jpg',
-        'title' => 'Menu',
-         'text' =>  'Please select',
+        'title' => 'Description',
+        'text' =>  'cartoon one piece',
         'actions' => [$actions_view]
         ];
        $messages = [        
@@ -71,7 +71,18 @@ $events = json_decode($content, true);
   				'packageId' => "3",
           'stickerId' => "183"            
   			];  
-  		  
+  	} else if ($event['type'] == 'postback') { 	 
+    /* {"events":[
+      {"type":"postback",
+      "replyToken":"2b34541c919a46179f4f81e3b9ea6588",
+      "source":{"userId":"Uc23982bf348aa387c2b73bcb2051a709","type":"user"},
+      "timestamp":1479374241667,
+      "postback":{"data":"action=buy&itemid=123"}}]} 
+      */
+      $messages = [        
+            'type' => 'text',
+    				'text' => $event['postback']['data']    
+    			]; 
     }else{
         	$messages = [        
             'type' => 'text',
@@ -103,40 +114,7 @@ $events = json_decode($content, true);
 				'replyToken' => $replyToken,
 				'messages' => [$messages],
 			];
-    }
-    
-       /*
-       $post = {
-      "replyToken":$replyToken,
-      "messages":[{
-          "type": "template",
-          "altText": "this is a buttons template",
-          "template": {
-              "type": "buttons",
-              "thumbnailImageUrl": "https://innova-linebot.herokuapp.com/69686.jpg",
-              "title": "Menu",
-              "text": "Please select",
-              "actions": [
-                  {
-                    "type": "postback",
-                    "label": "Buy",
-                    "data": "action=buy&itemid=123"
-                  },
-                  {
-                    "type": "postback",
-                    "label": "Add to cart",
-                    "data": "action=add&itemid=123"
-                  },
-                  {
-                    "type": "uri",
-                    "label": "View detail",
-                    "uri": "http://s1.tsuki-board.net/pics/figure/big/69686.jpg?t=1340402295"
-                  }
-              ]
-          }
-        }]
-        };
-        */
+    }   
         
       $post = json_encode($data);
 			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
@@ -152,3 +130,4 @@ $events = json_decode($content, true);
 
 			echo $result . "\r\n";
 	}
+}
