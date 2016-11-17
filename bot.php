@@ -19,11 +19,12 @@ if (!is_null($events['events'])) {
 			// Get text sent
       
 			$text = $event['message']['text'];
-      /*
+      
       $messages_view = [        
         'type' => 'text',
 				'text' => $text       
 			]; 
+      /*
        $data_view = [
 				'replyToken' => $replyToken,
 				'messages' => [$messages_view],
@@ -53,7 +54,7 @@ if (!is_null($events['events'])) {
 				'altText' => 'this is an template',
         'template' => $template_view
         ];
-        */
+        
             
 			// Build message to reply back
 			$messages = [        
@@ -61,7 +62,7 @@ if (!is_null($events['events'])) {
 				'text' => $text." ".json_encode($data_view)       
 			]; 
         
-    
+      */
        
 		} else if ($event['type'] == 'message' && $event['message']['type'] == 'sticker') {  
          // Build message to reply back
