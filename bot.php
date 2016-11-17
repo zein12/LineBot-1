@@ -9,12 +9,12 @@ $content = file_get_contents('php://input');
 $events = json_decode($content, true);  
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
-  $url = 'https://api.line.me/v2/bot/message/reply';
+  
 	// Loop through each event
 	foreach ($events['events'] as $event) {
-      $replyToken = $event['replyToken'];
+      $replyToken = $event['replyToken'];  
 		// Reply only when message sent is in 'text' format
-   
+     
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent
       
@@ -35,7 +35,7 @@ if (!is_null($events['events'])) {
             'label' =>'View detail',
             'uri'=> 'http://s1.tsuki-board.net/pics/figure/big/69686.jpg?t=1340402295'
         	);
-       */
+     
        $actions_view = array(
         		'type' => 'postback' ,
             'label' =>'Buy',
@@ -53,16 +53,15 @@ if (!is_null($events['events'])) {
 				'altText' => 'this is an template',
         'template' => $template_view
         ];
-        /*
-     
+        */
+            
 			// Build message to reply back
 			$messages = [        
         'type' => 'text',
 				'text' => $text." ".json_encode($data_view)       
 			]; 
         
-      */
-
+    
        
 		} else if ($event['type'] == 'message' && $event['message']['type'] == 'sticker') {  
          // Build message to reply back
@@ -78,6 +77,13 @@ if (!is_null($events['events'])) {
       "source":{"userId":"Uc23982bf348aa387c2b73bcb2051a709","type":"user"},
       "timestamp":1479374241667,
       "postback":{"data":"action=buy&itemid=123"}}]} 
+      
+      // add friend         
+      {"events":[
+      {"type":"follow",
+      "replyToken":"2b34541c919a46179f4f81e3b9ea6588",
+      "source":{"userId":"Uc23982bf348aa387c2b73bcb2051a709","type":"user"},
+      "timestamp":1479374241667}]}
       */
       $messages = [        
             'type' => 'text',
@@ -109,6 +115,12 @@ if (!is_null($events['events'])) {
 			];
     }   
         
+      reply_message($data, $access_token);
+	}
+}
+
+funtion reply_message($data, $access_token){
+      $url = 'https://api.line.me/v2/bot/message/reply';
       $post = json_encode($data);
 			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
 
@@ -122,5 +134,4 @@ if (!is_null($events['events'])) {
 			curl_close($ch);
 
 			echo $result . "\r\n";
-	}
 }
