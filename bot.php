@@ -63,16 +63,17 @@ if (!is_null($events['events'])) {
 	foreach ($events['events'] as $event) {
       $replyToken = $event['replyToken'];
 		// Reply only when message sent is in 'text' format
+    /*
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent
-      /*
+    
 			$text = $event['message']['text'];
 			// Build message to reply back
 			$messages = [        
         'type' => 'text',
 				'text' => $text." ".json_encode($events)       
 			]; 
-      */
+     
       $actions =  [
          'type' => 'postback',
          'label' =>"test postback",
@@ -127,8 +128,22 @@ if (!is_null($events['events'])) {
 				'messages' => [$messages],
 			];
     }
-    
-      $post = json_encode($data);
+    */
+      $post = {
+      "replyToken":$replyToken,
+      "messages":[{
+        "type":"template",
+        "allText":"this is an template",
+        "template":{
+            "type":"buttons",
+            "thumbnailImageUrl":"http:\/\/1.bp.blogspot.com\/_VChD0TN44Cc\/S8nYSoHXeQI\/AAAAAAAAIrg\/frnUGRABF2w\/s400\/3.1.jpg",
+            "title":"test button",
+            "text":"event message text",
+            "actions":[{"type":"message","label":"test button postback","text":"item=123"}]
+            }
+          }]
+        };
+      //$post = json_encode($data);
 			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
 
 			$ch = curl_init($url);
