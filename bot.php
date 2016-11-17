@@ -144,24 +144,40 @@ if (!is_null($events['events'])) {
 			];
     }
     
-       /*
+       
        $post = {
       "replyToken":$replyToken,
       "messages":[{
-        "type":"template",
-        "altText":"this is an template",
-        "template":{
-            "type":"buttons",
-            "thumbnailImageUrl":"http:\/\/1.bp.blogspot.com\/_VChD0TN44Cc\/S8nYSoHXeQI\/AAAAAAAAIrg\/frnUGRABF2w\/s400\/3.1.jpg",
-            "title":"test button",
-            "text":"event message text",
-            "actions":[{"type":"message","label":"test button postback","text":"item=123"}]
-            }
-          }]
+          "type": "template",
+          "altText": "this is a buttons template",
+          "template": {
+              "type": "buttons",
+              "thumbnailImageUrl": "http://s1.tsuki-board.net/pics/figure/big/69686.jpg?t=1340402295",
+              "title": "Menu",
+              "text": "Please select",
+              "actions": [
+                  {
+                    "type": "postback",
+                    "label": "Buy",
+                    "data": "action=buy&itemid=123"
+                  },
+                  {
+                    "type": "postback",
+                    "label": "Add to cart",
+                    "data": "action=add&itemid=123"
+                  },
+                  {
+                    "type": "uri",
+                    "label": "View detail",
+                    "uri": "http://s1.tsuki-board.net/pics/figure/big/69686.jpg?t=1340402295"
+                  }
+              ]
+          }
+        }]
         };
-        */
+       
         
-      $post = json_encode($data);
+      //$post = json_encode($data);
 			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
 
 			$ch = curl_init($url);
