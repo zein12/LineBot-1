@@ -66,8 +66,9 @@ if (!is_null($events['events'])) {
    
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent
-      /*
+      
 			$text = $event['message']['text'];
+      /*
 			// Build message to reply back
 			$messages = [        
         'type' => 'text',
@@ -92,9 +93,21 @@ if (!is_null($events['events'])) {
         'type' => 'template',
 				'altText' => 'this is an template',
         'template' => [$template],         
-			];  
-       	 	
+			];        	 	
 			 */
+      $text = $event['message']['text'];
+      $actionBtn = [
+          'type' => 'message',
+         'label' =>"test postback",
+         'text' => "ok" 
+      ]
+			// Build message to reply back
+			$messages = [        
+        'type' => 'confirm',
+				'text' => $text,
+        'actions' =>  [$actionBtn]
+			]; 
+       
 		} else if ($event['type'] == 'message' && $event['message']['type'] == 'sticker') {  
          // Build message to reply back
   			$messages = [
@@ -131,7 +144,7 @@ if (!is_null($events['events'])) {
 			];
     }
     
-      
+       /*
        $post = {
       "replyToken":$replyToken,
       "messages":[{
@@ -146,9 +159,9 @@ if (!is_null($events['events'])) {
             }
           }]
         };
-       
+        */
         
-      //$post = json_encode($data);
+      $post = json_encode($data);
 			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
 
 			$ch = curl_init($url);
