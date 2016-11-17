@@ -94,12 +94,16 @@ if (!is_null($events['events'])) {
                  'uri': 'http://s1.tsuki-board.net/pics/figure/big/69686.jpg?t=1340402295' 
               }]
       }];
+      $template_view = array(
+                'type: buttons',
+                'thumbnailImageUrl: https://innova-linebot.herokuapp.com/69686.jpg'
+             );
        */
        $template_view = ['type' => 'template'];
        $messages_view = [        
         'type' => 'template',
 				'altText' => 'this is an template',
-        'template' => [$template_view]
+        'template' => $template_view
         ];
       $data_view = [
 				'replyToken' => $replyToken,
