@@ -116,11 +116,6 @@ if (!is_null($events['events'])) {
 			];
     }   
         
-      reply_message($data, $access_token);
-	}
-}
-
-funtion reply_message($data, $access_token){
       $url = 'https://api.line.me/v2/bot/message/reply';
       $post = json_encode($data);
 			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
@@ -135,4 +130,6 @@ funtion reply_message($data, $access_token){
 			curl_close($ch);
 
 			echo $result . "\r\n";
+	}
 }
+
