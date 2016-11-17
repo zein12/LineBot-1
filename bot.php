@@ -152,7 +152,7 @@ if (!is_null($events['events'])) {
           "altText": "this is a buttons template",
           "template": {
               "type": "buttons",
-              "thumbnailImageUrl": "http://s1.tsuki-board.net/pics/figure/big/69686.jpg?t=1340402295",
+              "thumbnailImageUrl": "https://innova-linebot.herokuapp.com/69686.jpg",
               "title": "Menu",
               "text": "Please select",
               "actions": [
