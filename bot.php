@@ -79,7 +79,7 @@ if (!is_null($events['events'])) {
 			];
       */
       
-           
+        /*   
       $messages_view = [        
         'type' => 'template',
 				'altText' => 'this is an template',
@@ -94,7 +94,16 @@ if (!is_null($events['events'])) {
                  'uri': 'http://s1.tsuki-board.net/pics/figure/big/69686.jpg?t=1340402295' 
               }]
       }];
-      
+       */
+       $messages_view = [        
+        'type' => 'template',
+				'altText' => 'this is an template',
+        'template' => {
+            'type' => 'buttons',
+    				'thumbnailImageUrl' => 'https://innova-linebot.herokuapp.com/69686.jpg',
+            'title' => 'title',
+            'text' =>  'test'
+      }];
       $data_view = [
 				'replyToken' => $replyToken,
 				'messages' => [$messages_view],
