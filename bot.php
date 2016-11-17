@@ -95,9 +95,11 @@ if (!is_null($events['events'])) {
               }]
       }];
        */
+       $template_view = ['type' => 'template'];
        $messages_view = [        
         'type' => 'template',
 				'altText' => 'this is an template',
+        'template' => [$template_view]
         ];
       $data_view = [
 				'replyToken' => $replyToken,
