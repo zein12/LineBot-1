@@ -73,7 +73,7 @@ if (!is_null($events['events'])) {
         'type' => 'text',
 				'text' => $text." ".json_encode($events)       
 			]; 
-       */
+       
       $actions =  [
          'type' => 'postback',
          'label' =>"test postback",
@@ -94,7 +94,7 @@ if (!is_null($events['events'])) {
         'template' => [$template],         
 			];  
        	 	
-			
+			 */
 		} else if ($event['type'] == 'message' && $event['message']['type'] == 'sticker') {  
          // Build message to reply back
   			$messages = [
@@ -132,7 +132,7 @@ if (!is_null($events['events'])) {
     }
     
       
-      /* $post = {
+       $post = {
       "replyToken":$replyToken,
       "messages":[{
         "type":"template",
@@ -146,9 +146,9 @@ if (!is_null($events['events'])) {
             }
           }]
         };
-        */
+       
         
-      $post = json_encode($data);
+      //$post = json_encode($data);
 			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
 
 			$ch = curl_init($url);
