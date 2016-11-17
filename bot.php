@@ -99,11 +99,10 @@ if (!is_null($events['events'])) {
                 'thumbnailImageUrl: https://innova-linebot.herokuapp.com/69686.jpg'
              );
        */
-       $actions_view = [
-                 'type' => 'uri',
-                 'label' =>'View detail',
-                 'uri': 'http://s1.tsuki-board.net/pics/figure/big/69686.jpg?t=1340402295' 
-              ];
+       $actions_view = array(
+                'type: buttons',
+                'thumbnailImageUrl: https://innova-linebot.herokuapp.com/69686.jpg'
+             );
        
        $template_view = [
         'type' => 'buttons',
