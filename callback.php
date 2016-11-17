@@ -64,12 +64,13 @@ if (!is_null($events['events'])) {
             				'packageId' => "1",
                     'stickerId' => "5"            
             			]; 
-                  break;
-                        
-              replyMessage($replyToken, $messages);
+                  break;                          
+              
           }
       
-      
+            if($event['source']['type'] != "room") {
+              replyMessage($replyToken, $messages);
+            }
       // action postback
       } else if($event['type'] == 'postback') {
       

@@ -17,7 +17,15 @@ if (!is_null($events['events'])) {
      
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent
-      
+         // msg group
+         /*
+          {"events":[{"type":"message","replyToken":"0c1689469711418eb176b01fab6b19ed","source":{"roomId":"R7d08cea0c50156edd625aadaf9ee6bd1","type":"room"},"timestamp":1479382541473,"message":{"type":"text","id":"5218659413438","text":"\u0e21\u0e35\u0e44\u0e23"}}]}
+         
+         1 to 1
+         
+          {"events":[{"type":"message","replyToken":"0f01ff01f0354e6ea2c4c3624dd504f2","source":{"userId":"Uc23982bf348aa387c2b73bcb2051a709","type":"user"},"timestamp":1479382624545,"message":{"type":"text","id":"5218666454883","text":"w"}}]}
+         
+         */
 			$text = $event['message']['text'];
       
       $messages = [        
