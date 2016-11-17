@@ -103,13 +103,15 @@ if (!is_null($events['events'])) {
           'stickerId' => "183"            
   			];  
   		  
-    } else if ($event['type'] == 'message' && $event['message']['type'] == 'postback') {
+    } 
+    /*else if ($event['type'] == 'message' && $event['message']['type'] == 'postback') {
         $messages = [
   				'type' => 'postback',
           'replyToken' => $replyToken,
   				'postback.data' => "33333333".json_encode($events)            
   			]; 
-    }     
+    } 
+    */    
    // Make a POST Request to Messaging API to reply to sender   
     if (!is_null($messages)) {
       $data = [
