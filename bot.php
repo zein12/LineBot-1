@@ -68,22 +68,30 @@ if (!is_null($events['events'])) {
 			// Get text sent
       
 			$text = $event['message']['text'];
-      /*
+      $messages_view = [        
+        'type' => 'text',
+				'text' => $text       
+			]; 
+       $data_view = [
+				'replyToken' => $replyToken,
+				'messages' => [$messages_view],
+			];
 			// Build message to reply back
 			$messages = [        
         'type' => 'text',
-				'text' => $text." ".json_encode($events)       
+				'text' => $text." ".json_encode($data_view)       
 			]; 
-       
+        
+        /*
       $actions =  [
-         'type' => 'postback',
-         'label' =>"test postback",
-         'data' => "item123"         
+         'type' => 'uri',
+         'label' =>'View detail',
+         'uri': 'http://s1.tsuki-board.net/pics/figure/big/69686.jpg?t=1340402295' 
       ];
       
       $template = [
             'type' => 'buttons',
-    				'thumbnailImageUrl' => '',
+    				'thumbnailImageUrl' => 'https://innova-linebot.herokuapp.com/69686.jpg',
             'title' => '',
             'text' =>  'test'  ,
             'actions' => [$actions]
@@ -95,18 +103,6 @@ if (!is_null($events['events'])) {
         'template' => [$template],         
 			];        	 	
 			 */
-      $text = $event['message']['text'];
-      $actionBtn = [{
-          'type' => 'message',
-         'label' =>"test postback",
-         'text' => "ok" 
-         }]
-			// Build message to reply back
-			$messages = [        
-        'type' => 'confirm',
-				'text' => $text,
-        'actions' =>  [$actionBtn]
-			]; 
        
 		} else if ($event['type'] == 'message' && $event['message']['type'] == 'sticker') {  
          // Build message to reply back
@@ -144,7 +140,7 @@ if (!is_null($events['events'])) {
 			];
     }
     
-       
+       /*
        $post = {
       "replyToken":$replyToken,
       "messages":[{
@@ -175,9 +171,9 @@ if (!is_null($events['events'])) {
           }
         }]
         };
-       
+        */
         
-      //$post = json_encode($data);
+      $post = json_encode($data);
 			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
 
 			$ch = curl_init($url);
