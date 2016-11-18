@@ -111,14 +111,14 @@ if (!is_null($events['events'])) {
            /*
            {"events":[{"type":"join","replyToken":"26c5f7246f83406aa99bb5a3942462f4","source":{"roomId":"R7d08cea0c50156edd625aadaf9ee6bd1","type":"room"},"timestamp":1479378196834}]}
            */
-           
+           /* 
           $url = 'https://dice.in.th/LineBot/manage_data.php';
           $data = [
             				'events' => $event['type'],
             				'roomId' => $event['source']['roomId'],
             			];
           $post = json_encode($data);
-          /*
+         
     			$headers = array('Content-Type: application/json');
     
     			$ch = curl_init($url);
@@ -132,7 +132,7 @@ if (!is_null($events['events'])) {
            */
           $messages = [        
             'type' => 'text',
-    				'text' => json_encode($events)." ". $post 
+    				'text' => json_encode($events) 
     			];
           
           replyMessage($replyToken, $messages);
