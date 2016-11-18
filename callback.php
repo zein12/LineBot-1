@@ -20,6 +20,29 @@ if (!is_null($events['events'])) {
           "timestamp":1479374241667}]}
       */
       
+        
+        $url = 'https://dice.in.th/LineBot/manage_data.php';
+        $data = [
+          				'event' => $event['type'],
+          				'userId' => $event['source']['userId'],
+          			];
+        $post = json_encode($data);
+  			$headers = array('Content-Type: application/json');
+  
+  			$ch = curl_init($url);
+  			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+  			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+  			curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+  			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+  			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+  			$result = curl_exec($ch);
+  			curl_close($ch);
+        $messages = [        
+                        'type' => 'text',
+                				'text' => $result." ".$text." ".json_encode($events)    
+                			];
+                      
+        replyMessage($replyToken, $messages);
        // Reply only when message sent 
 		  } else if($event['type'] == 'message') {
          
