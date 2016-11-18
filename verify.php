@@ -13,5 +13,5 @@ $result = curl_exec($ch);
 curl_close($ch);
 
 echo $result;
-
-echo "dirname: ".dirname(__FILE__).", DOCUMENT_ROOT: ".$_SERVER["DOCUMENT_ROOT"]; 
+echo file_get_contents("index.php");
+//echo "dirname: ".dirname(__FILE__).", DOCUMENT_ROOT: ".$_SERVER["DOCUMENT_ROOT"]; 
