@@ -91,7 +91,7 @@ if (!is_null($events['events'])) {
           }           
         
           if($event['source']['type'] != "room") {
-              replyMessage($replyToken, $messagesTxt);
+              replyMessage($replyToken, $messages);
           }
       // action postback
       } else if($event['type'] == 'postback') {
