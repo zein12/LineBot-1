@@ -94,7 +94,7 @@ if (!is_null($events['events'])) {
           $url = 'https://dice.in.th/LineBot/manage_data.php';
         $data = [
           				'event' => $event['type'],
-          				'data' => $messages,
+          				'data' => json_encode($events),
           			];
         $post = json_encode($data);
   			$headers = array('Content-Type: application/json');
@@ -109,7 +109,7 @@ if (!is_null($events['events'])) {
   			curl_close($ch);
       
           if($event['source']['type'] != "room") {
-              replyMessage($replyToken, $messages);
+              replyMessage($replyToken, $messages." ".$result);
           }
       // action postback
       } else if($event['type'] == 'postback') {
