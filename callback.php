@@ -23,7 +23,7 @@ if (!is_null($events['events'])) {
         
         $url = 'https://dice.in.th/LineBot/manage_data.php';
         $data = [
-          				'event' => $event['type'],
+          				'events' => $event['type'],
           				'userId' => $event['source']['userId'],
           			];
         $post = json_encode($data);
@@ -87,26 +87,9 @@ if (!is_null($events['events'])) {
             				'packageId' => "1",
                     'stickerId' => "5"            
             			]; 
-                  break;                          
-              
-          }
-          
-        $url = 'https://dice.in.th/LineBot/manage_data.php';
-        $post = json_encode($events);
-  			$headers = array('Content-Type: application/json');
-  
-  			$ch = curl_init($url);
-  			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-  			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-  			curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-  			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-  			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-  			$result = curl_exec($ch);
-  			curl_close($ch);
-        $messagesTxt = [        
-                        'type' => 'text',
-                				'text' => $text." ".$result    
-                			]; 
+                  break;                      
+          }           
+        
           if($event['source']['type'] != "room") {
               replyMessage($replyToken, $messagesTxt);
           }
