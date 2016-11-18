@@ -16,5 +16,6 @@ curl_close($ch);
 echo $result;
 */
 
-$file = file_get_contents("https://dice.in.th/LineBot/friends_list.txt");
-echo $file;
+$json = file_get_contents("https://dice.in.th/LineBot/friends_list.json");
+$obj = json_decode($json, true);
+var_dump($obj);
