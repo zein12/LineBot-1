@@ -121,7 +121,7 @@ body{
   <tr>
     <td><?php echo $ch_result["displayName"] ?></td>
     <td><?php echo $ch_result["userId"] ?></td>
-    <td>Germany</td>
+    <td><img style="width: 50px;height: 48px;" src="<?php echo $ch_result["pictureUrl"] ?>"></td>
     <td>Germany</td>
   </tr>
   <?php 
