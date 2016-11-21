@@ -17,8 +17,12 @@ $(function() {
     
     		$(this).addClass('current');
     		$("#"+tab_id).addClass('current');
-    	});
+    	}); 
 });
+
+function sendMsg(userID) {
+    console.log(userID);
+}
 
 </script>
 
@@ -130,7 +134,7 @@ body{
     <?php 
        if (!array_key_exists("message",$ch_result)) {
     ?>         
-    <td><button onclick="sendMsg(<?php echo $ch_result["userId"] ?>)">send Message</button></td>
+    <td><button onclick="sendMsg('<?php echo $ch_result["userId"] ?>')">send Message</button></td>
     <?php
       } else { 
     ?>
@@ -159,7 +163,7 @@ body{
         ?>
         <tr>
           <td><?php echo $rs["roomId"] ?></td>
-          <td><button onclick="sendMsgGroup(<?php echo $rs["roomId"] ?>)">send Message</button></td>
+          <td><button onclick="sendMsgGroup('<?php echo $rs["roomId"] ?>')">send Message</button></td>
         </tr>
         <?php 
         }  
