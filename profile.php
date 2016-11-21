@@ -106,7 +106,7 @@ $url = 'https://api.line.me/v1/profile/{'.$user.'}';
     $channelID = "1488211839"; 
     $channelSecret = "3eec2a0e5a022b191d8f90330fbcaa20"; 
     $channelMID = "Uc23982bf348aa387c2b73bcb2051a709";      
-    $url  =  "https://api.line.me/v2/bot/profile?userId=".$channelMID; 
+    $url  =  "https://api.line.me/v2/bot/profile/".$channelMID; 
     $access_token = '/uRUSV5cXcYdnAjK7n16+BE9EavYwZay0E3zYt340wH+E3J95IwzSPT++IDf6tHTxHlDW1Az0IVwi7pqjfIAza+J0qRA+7+1nzAIZN1JEx1Ly8KSNXXY1pKm8VFpWLbdNy3iwH6cH4fchucMF16kNAdB04t89/1O/w1cDnyilFU=';
     echo $url;
       
