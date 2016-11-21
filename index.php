@@ -20,6 +20,13 @@ $(function() {
     	}); 
 });
 
+function sendMsgAllUser() {       
+    $.post("pushmessageAll.php", null, function(response,status){ // Required Callback Function
+      //alert("*----Received Data----*\n\nResponse : " + response+"\n\nStatus : " + status); 
+       alert("Status : " + status);      
+    });     
+}
+
 function sendMsg(userID, displayName) {
     var postData = {
         "userId" : userID,
@@ -54,10 +61,7 @@ body{
 		.container{
 			width: 800px;
 			margin: 0 auto;
-		}
-
-
-
+		}  
 		ul.tabs{
 			margin: 0px;
 			padding: 0px;
@@ -104,7 +108,8 @@ body{
 </style>
 </head>
 
-<body>   
+<body> 
+<button onclick="sendMsgAllUser()">send all</button>  
 <div class="container">
 
 	<ul class="tabs">
