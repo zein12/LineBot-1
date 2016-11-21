@@ -142,12 +142,12 @@ if (!is_null($events['events'])) {
              */
           $messages = [        
             'type' => 'text',
-    				'text' => json_encode($events) ." ".$post
+    				'text' => json_encode($events)
     			];
           
           replyMessage($replyToken, $messages);
           
-      // join
+      // leave
       } else if($event['type'] == 'leave') {
         $messages = [        
             'type' => 'text',
