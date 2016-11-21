@@ -20,8 +20,20 @@ $(function() {
     	}); 
 });
 
-function sendMsg(userID) {
-    console.log(userID);
+function sendMsg(userID, displayName) {
+    //console.log(userID);
+    var postData = {
+        "userId" : userID,
+        "displayName" : displayName
+    };
+
+    console.log(postData);
+
+    $.post("pushmessage.php", postData, function(response,status){ // Required Callback Function
+        alert("*----Received Data----*\n\nResponse : " + response+"\n\nStatus : " + status);       
+    });
+    
+    
 }
 
 </script>
@@ -134,7 +146,7 @@ body{
     <?php 
        if (!array_key_exists("message",$ch_result)) {
     ?>         
-    <td><button onclick="sendMsg('<?php echo $ch_result["userId"] ?>')">send Message</button></td>
+    <td><button onclick="sendMsg('<?php echo $ch_result["userId"] ?>', '<?php echo $ch_result["displayName"] ?>')">send Message</button></td>
     <?php
       } else { 
     ?>
