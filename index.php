@@ -38,8 +38,8 @@ function sendMsgGroup(roomID) {
     };
     //console.log(postData);  
     $.post("pushmsgGroup.php", postData, function(response,status){ // Required Callback Function
-      //alert("*----Received Data----*\n\nResponse : " + response+"\n\nStatus : " + status); 
-       alert("Status : " + status);      
+      alert("*----Received Data----*\n\nResponse : " + response+"\n\nStatus : " + status); 
+       //alert("Status : " + status);      
     });     
 }
 
