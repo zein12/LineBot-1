@@ -103,24 +103,24 @@ body{
   $json = file_get_contents("https://dice.in.th/LineBot/friends_list.json");
   $obj = json_decode($json, true);
   //var_dump($obj);
-  $access_token = '/uRUSV5cXcYdnAjK7n16+BE9EavYwZay0E3zYt340wH+E3J95IwzSPT++IDf6tHTxHlDW1Az0IVwi7pqjfIAza+J0qRA+7+1nzAIZN1JEx1Ly8KSNXXY1pKm8VFpWLbdNy3iwH6cH4fchucMF16kNAdB04t89/1O/w1cDnyilFU=';    
+  $access_token = '/uRUSV5cXcYdnAjK7n16+BE9EavYwZay0E3zYt340wH+E3J95IwzSPT++IDf6tHTxHlDW1Az0IVwi7pqjfIAza+J0qRA+7+1nzAIZN1JEx1Ly8KSNXXY1pKm8VFpWLbdNy3iwH6cH4fchucMF16kNAdB04t89/1O/w1cDnyilFU=';  
  
-  foreach($obj as $rs) { 
-   var_dump($rs["userId"]);       
-      $url = 'https://api.line.me/v1/profile/'.$rs["userId"];
-      $headers = array('Authorization: Bearer ' . $access_token);        
-      $ch = curl_init($url);
-      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-      curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-      curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+  foreach($obj as $rs) {       
+      $url  =  "https://api.line.me/v2/bot/profile/".$rs["userId"];     
+      echo $url;       
+			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token); 
+			$ch = curl_init($url);
+			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
       $result = curl_exec($ch);
       curl_close($ch);
       $ch_result = json_decode($result, true);
       var_dump($ch_result);
   ?>
   <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
+    <td><?php echo $ch_result["displayName"] ?></td>
+    <td><?php echo $ch_result["userId"] ?></td>
     <td>Germany</td>
     <td>Germany</td>
   </tr>
