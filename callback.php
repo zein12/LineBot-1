@@ -8,7 +8,7 @@ $events = json_decode($content, true);
 if (!is_null($events['events'])) {
   //$url = 'https://api.line.me/v2/bot/message/reply';
 	// Loop through each event
-  /*
+
 	foreach ($events['events'] as $event) {
       $replyToken = $event['replyToken']; 
       $messages = [        
@@ -18,18 +18,13 @@ if (!is_null($events['events'])) {
           
       replyMessage($replyToken, $messages);      
   } 
-  */
+  /*
   $messages = [        
             'type' => 'text',
     				'text' => json_encode($events)
     			];
   pushMessage("Uc23982bf348aa387c2b73bcb2051a709", $messages);
-}else{
-   $messages = [        
-            'type' => 'text',
-    				'text' => json_encode($events)
-    			];
-  pushMessage("Uc23982bf348aa387c2b73bcb2051a709", $messages);
+  */
 }
 
 function replyMessage($replyToken, $data_messages) {
