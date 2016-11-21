@@ -21,19 +21,26 @@ $(function() {
 });
 
 function sendMsg(userID, displayName) {
-    //console.log(userID);
     var postData = {
         "userId" : userID,
         "displayName" : displayName
     };
-
-    console.log(postData);
-
+    //console.log(postData pushmsgGroup);  
     $.post("pushmessage.php", postData, function(response,status){ // Required Callback Function
-        alert("*----Received Data----*\n\nResponse : " + response+"\n\nStatus : " + status);       
-    });
-    
-    
+      //alert("*----Received Data----*\n\nResponse : " + response+"\n\nStatus : " + status); 
+       alert("Status : " + status);      
+    });     
+}
+
+function sendMsgGroup(roomID) {
+    var postData = {
+        "roomID" : roomID
+    };
+    //console.log(postData);  
+    $.post("pushmsgGroup.php", postData, function(response,status){ // Required Callback Function
+      //alert("*----Received Data----*\n\nResponse : " + response+"\n\nStatus : " + status); 
+       alert("Status : " + status);      
+    });     
 }
 
 </script>
