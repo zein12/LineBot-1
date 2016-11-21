@@ -127,7 +127,17 @@ body{
     <td><?php echo $ch_result["userId"] ?></td>
     <td><img style="width: 50px;height: 48px;" src="<?php echo $ch_result["pictureUrl"] ?>"></td>
     <td><?php echo $ch_result["statusMessage"] ?></td>
+    <?php 
+       if (!array_key_exists("message",$ch_result)) {
+    ?>         
     <td><button onclick="sendMsg(<?php echo $ch_result["userId"] ?>)">send Message</button></td>
+    <?php
+      } else { 
+    ?>
+       <td></td>
+    <?php
+      } 
+    ?>
   </tr>
   <?php 
   }  
