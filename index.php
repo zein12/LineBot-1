@@ -62,26 +62,72 @@ body{
 		.tab-content.current{
 			display: inherit;
 		}
-      </style>
+    
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
 </head>
 
 <body>   
 <div class="container">
 
 	<ul class="tabs">
-		<li class="tab-link current" data-tab="tab-1">Tab One</li>
+		<li class="tab-link current" data-tab="tab-1">User Follow</li>
 		<li class="tab-link" data-tab="tab-2">Tab Two</li>
 		<li class="tab-link" data-tab="tab-3">Tab Three</li>
 		<li class="tab-link" data-tab="tab-4">Tab Four</li>
 	</ul>
 
 	<div id="tab-1" class="tab-content current">
+  <table>
+  <tr>
+    <th>displayName</th>
+    <th>userId</th>
+    <th>pictureUrl</th>
+    <th>statusMessage</th>
+  </tr>
   <?php
   $json = file_get_contents("https://dice.in.th/LineBot/friends_list.json");
   $obj = json_decode($json, true);
-  var_dump($obj);
+  //var_dump($obj);
+  $access_token = '/uRUSV5cXcYdnAjK7n16+BE9EavYwZay0E3zYt340wH+E3J95IwzSPT++IDf6tHTxHlDW1Az0IVwi7pqjfIAza+J0qRA+7+1nzAIZN1JEx1Ly8KSNXXY1pKm8VFpWLbdNy3iwH6cH4fchucMF16kNAdB04t89/1O/w1cDnyilFU=';    
+ 
+  foreach($obj as $rs) { 
+   var_dump($rs["userId"]);       
+      $url = 'https://api.line.me/v1/profile/'.$rs["userId"];
+      $headers = array('Authorization: Bearer ' . $access_token);        
+      $ch = curl_init($url);
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+      curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+      curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+      $result = curl_exec($ch);
+      curl_close($ch);
+      $ch_result = json_decode($result, true);
+      var_dump($ch_result);
   ?>
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  <tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Maria Anders</td>
+    <td>Germany</td>
+    <td>Germany</td>
+  </tr>
+  <?php 
+  }  
+  ?>
+	</table>
 	</div>
 	<div id="tab-2" class="tab-content">
 		 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
