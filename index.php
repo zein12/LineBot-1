@@ -2,7 +2,10 @@
 <html>
 <head>
 <title>Line API Message</title>
-<script src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
+<meta charset="utf-8" />
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+<meta http-equiv="content-type" content="text/plain; charset=iso-8859-1" />
+<script src="jquery-1.9.0.min.js"></script>
 <script type="text/javascript" language="javascript">
 $(function() {
       $('ul.tabs li').click(function(){
