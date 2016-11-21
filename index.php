@@ -116,13 +116,16 @@ body{
       $result = curl_exec($ch);
       curl_close($ch);
       $ch_result = json_decode($result, true);
-      var_dump($ch_result);
+      if (array_key_exists("message",$ch_result)) {
+           var_dump($ch_result);
+      }        
+        
   ?>
   <tr>
     <td><?php echo $ch_result["displayName"] ?></td>
     <td><?php echo $ch_result["userId"] ?></td>
     <td><img style="width: 50px;height: 48px;" src="<?php echo $ch_result["pictureUrl"] ?>"></td>
-    <td>Germany</td>
+    <td><?php echo $ch_result["statusMessage"] ?></td>
   </tr>
   <?php 
   }  
