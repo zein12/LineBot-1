@@ -17,7 +17,7 @@ $messages = [
 				'text' => "Hi.."
 			];
 $data = [
-	'to' => [$jsondata],
+	'to' => $jsondata,
 	'messages' => [$messages],
 ];
 $post = json_encode($data);
