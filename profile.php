@@ -91,7 +91,7 @@ function botmain($json){
 
 $access_token = '/uRUSV5cXcYdnAjK7n16+BE9EavYwZay0E3zYt340wH+E3J95IwzSPT++IDf6tHTxHlDW1Az0IVwi7pqjfIAza+J0qRA+7+1nzAIZN1JEx1Ly8KSNXXY1pKm8VFpWLbdNy3iwH6cH4fchucMF16kNAdB04t89/1O/w1cDnyilFU=';
  $user = "Uc23982bf348aa387c2b73bcb2051a709";
-$url = 'https://api.line.me/v1/profile/'.$user;
+$url = 'https://api.line.me/v1/profile/{'.$user.'}';
       $headers = array('Authorization: Bearer ' . $access_token);        
       $ch = curl_init($url);
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
