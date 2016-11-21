@@ -86,7 +86,7 @@ body{
 
 	<ul class="tabs">
 		<li class="tab-link current" data-tab="tab-1">User Follow</li>
-		<li class="tab-link" data-tab="tab-2">Tab Two</li>
+		<li class="tab-link" data-tab="tab-2">Room</li>
 		<li class="tab-link" data-tab="tab-3">Tab Three</li>
 		<li class="tab-link" data-tab="tab-4">Tab Four</li>
 	</ul>
@@ -98,6 +98,7 @@ body{
     <th>userId</th>
     <th>pictureUrl</th>
     <th>statusMessage</th>
+    <th></th>
   </tr>
   <?php
   $json = file_get_contents("https://dice.in.th/LineBot/friends_list.json");
@@ -107,7 +108,7 @@ body{
  
   foreach($obj as $rs) {       
       $url  =  "https://api.line.me/v2/bot/profile/".$rs["userId"];     
-      echo $url;       
+      //echo $url;       
 			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token); 
 			$ch = curl_init($url);
 			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
@@ -126,6 +127,7 @@ body{
     <td><?php echo $ch_result["userId"] ?></td>
     <td><img style="width: 50px;height: 48px;" src="<?php echo $ch_result["pictureUrl"] ?>"></td>
     <td><?php echo $ch_result["statusMessage"] ?></td>
+    <td><button onclick="sendMsg(<?php echo $ch_result["userId"] ?>)">send Message</button></td>
   </tr>
   <?php 
   }  
@@ -133,7 +135,26 @@ body{
 	</table>
 	</div>
 	<div id="tab-2" class="tab-content">
-		 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		 <table>
+      <tr>
+        <th>roomId</th>
+        <th></th>
+      </tr>
+      <?php
+        $json = file_get_contents("https://dice.in.th/LineBot/rooms_list.json");
+        $obj = json_decode($json, true);      
+       
+        foreach($obj as $rs) {                   
+              
+        ?>
+        <tr>
+          <td><?php echo $rs["roomId"] ?></td>
+          <td><button onclick="sendMsgGroup(<?php echo $rs["roomId"] ?>)">send Message</button></td>
+        </tr>
+        <?php 
+        }  
+        ?>
+  </table>
 	</div>
 	<div id="tab-3" class="tab-content">
 		Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
