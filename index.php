@@ -14,8 +14,8 @@ $(function() {
     		$(this).addClass('current');
     		$("#"+tab_id).addClass('current');
     	});
-   });
 });
+
 </script>
 
 <style>
