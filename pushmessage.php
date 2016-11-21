@@ -1,14 +1,14 @@
 <?php
 
 $access_token = '/uRUSV5cXcYdnAjK7n16+BE9EavYwZay0E3zYt340wH+E3J95IwzSPT++IDf6tHTxHlDW1Az0IVwi7pqjfIAza+J0qRA+7+1nzAIZN1JEx1Ly8KSNXXY1pKm8VFpWLbdNy3iwH6cH4fchucMF16kNAdB04t89/1O/w1cDnyilFU=';
-/*
+
 $url = 'https://api.line.me/v2/bot/message/push';
 $messages = [
 				'type' => 'text',
 				'text' => "Hello"
 			];
 $data = [
-	'to' => "Uc23982bf348aa387c2b73bcb2051a709",
+	'to' => "R55202c0a04e8e3ba84121b1e409b13bd",
 	'messages' => [$messages],
 ];
 $post = json_encode($data);
@@ -24,8 +24,8 @@ $result = curl_exec($ch);
 curl_close($ch);
 
 echo $result . "\r\n";
-*/
 
+/*
 $url = 'https://api.line.me/v1/events';
 $data = {
 	'to' : ["uf714a5b008cca057a4cb8cf7c0cb2e6c"],
@@ -62,3 +62,4 @@ $result = curl_exec($ch);
 curl_close($ch);
 
 echo $result . "\r\n";
+*/
