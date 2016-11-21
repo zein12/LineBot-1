@@ -113,10 +113,20 @@ if (!is_null($events['events'])) {
            */
          
           $url = 'https://dice.in.th/LineBot/manage_data.php';
-          $data = [
+          if($event['source']['type'] == "room") {
+              $data = [
             				'events' => $event['type'],
+                    'sourceType' => $event['source']['type'],
             				'roomId' => $event['source']['roomId'],
             			];
+          } else {
+                $data = [
+            				'events' => $event['type'],
+                    'sourceType' => $event['source']['type'],
+            				'groupId' => $event['source']['groupId'],
+            			];
+          }
+          
           $post = json_encode($data);
          
     			$headers = array('Content-Type: application/json');
@@ -137,6 +147,14 @@ if (!is_null($events['events'])) {
           
           replyMessage($replyToken, $messages);
           */
+      // join
+      } else if($event['type'] == 'leave') {
+        $messages = [        
+            'type' => 'text',
+    				'text' => json_encode($events)
+    			];
+          
+          replyMessage($replyToken, $messages);
       }       
       
   }
@@ -162,4 +180,42 @@ function replyMessage($replyToken, $data_messages) {
 			curl_close($ch);
 
 			echo $result . "\r\n";    
+}
+
+function LeaveRequest($leaveType, $id) {
+      $access_token = '/uRUSV5cXcYdnAjK7n16+BE9EavYwZay0E3zYt340wH+E3J95IwzSPT++IDf6tHTxHlDW1Az0IVwi7pqjfIAza+J0qRA+7+1nzAIZN1JEx1Ly8KSNXXY1pKm8VFpWLbdNy3iwH6cH4fchucMF16kNAdB04t89/1O/w1cDnyilFU='; 
+      if($leaveType == 'room')  $url = 'https://api.line.me/v2/bot/room/{'.$id.'}/leave';
+      else  $url = 'https://api.line.me/v2/bot/group/{'.$id.'}/leave';
+     
+			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+
+			$ch = curl_init($url);
+			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			//curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+			$result = curl_exec($ch);
+			curl_close($ch);
+
+			echo $result . "\r\n";    
+}
+
+function manageRequest($data_post) {
+       
+      $url = 'https://dice.in.th/LineBot/manage_data.php';      
+     
+      $post = json_encode($data_post);
+			$headers = array('Content-Type: application/json');
+
+			$ch = curl_init($url);
+			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+			$result = curl_exec($ch);
+			curl_close($ch);
+      return $result;
+			//echo $result . "\r\n";    
 }
