@@ -63,7 +63,7 @@ curl_close($ch);
 
 echo $result . "\r\n";
 */ 
-
+ /*
 $channelID = "1488211839"; 
     $channelSecret = "3eec2a0e5a022b191d8f90330fbcaa20"; 
     $channelMID = "uf714a5b008cca057a4cb8cf7c0cb2e6c";      
@@ -84,3 +84,19 @@ $channelID = "1488211839";
 
 		 $Json = json_decode ($result, true);
      var_dump($ Json);
+     */
+     
+     $url = "https://trialbot-api.line.me/v1/profiles?mids=uf714a5b008cca057a4cb8cf7c0cb2e6c";
+$curl = curl_init ($url) ;
+curl_setopt($curl, CURLOPT_HTTPHEADER, array(
+     'Content-Type: application/json; charset = UTF-8',
+     'X-Line-ChannelID: 1488211839',
+     'X-Line-ChannelSecret: 3eec2a0e5a022b191d8f90330fbcaa20',
+     'X-Line-Trusted-User-With-ACL: uf714a5b008cca057a4cb8cf7c0cb2e6c')
+);
+curl_setopt ($curl, CURLOPT_RETURNTRANSFER, true );
+$output = curl_exec ($curl) ;
+curl_close($curl);
+
+$Json = json_decode ($output, true);
+     var_dump($Json);
