@@ -1,4 +1,5 @@
-<?php        
+<?php  
+/*      
 $access_token = '/uRUSV5cXcYdnAjK7n16+BE9EavYwZay0E3zYt340wH+E3J95IwzSPT++IDf6tHTxHlDW1Az0IVwi7pqjfIAza+J0qRA+7+1nzAIZN1JEx1Ly8KSNXXY1pKm8VFpWLbdNy3iwH6cH4fchucMF16kNAdB04t89/1O/w1cDnyilFU='; 
 $url = 'https://api.line.me/v2/bot/message/push';   
       
@@ -39,5 +40,42 @@ $result = curl_exec($ch);
 curl_close($ch);
 //$ch_result = json_decode($result, true);
 echo $result;
+*/
+
+    $channelID = "1488211839"; 
+    $channelSecret = "3eec2a0e5a022b191d8f90330fbcaa20"; 
+    $channelMID = "uf714a5b008cca057a4cb8cf7c0cb2e6c";
+    $ret = array();
+    $sendheaders = array(
+                'Content-Type: application/json; charset=UTF-8',
+                'X-Line-ChannelID: '.$channelID,
+                'X-Line-ChannelSecret: '.$channelSecret,
+                'X-Line-Trusted-User-With-ACL: '.$channelMID
+             );
+
+  
+    $resContent = array(
+      "contentType"=>1,
+      "toType"=>1,
+      "text"=>"Hi.."
+    );
+    $resp = array(
+                'to' => array("Uc23982bf348aa387c2b73bcb2051a709","U9064a2310b6a52cdbb0682912ba6179c"),
+                'toChannel' => 1383378250, # Fixed value
+                'eventType' => '138311608800106203', # Fixed value
+                'content' => $resContent,
+    );
+  $url = "https://trialbot-api.line.me/v1/events";
+  $curl = curl_init($url);
+  $options = array(
+    CURLOPT_HTTPHEADER => $sendheaders,
+    CURLOPT_POST => true,//POST
+    CURLOPT_POSTFIELDS => json_encode($resp), 
+    CURLOPT_SSL_VERIFYPEER => false,
+    CURLOPT_RETURNTRANSFER => true
+  );
+  curl_setopt_array($curl, $options);
+  $result = curl_exec($curl);
+  curl_close($curl);
 
  
