@@ -65,13 +65,13 @@ echo $result;
                 'eventType' => '138311608800106203', # Fixed value
                 'content' => $resContent,
     );
-    var_dump($resp);
+    var_dump(json_encode($resp));
   $url = "https://trialbot-api.line.me/v1/events";  
   
   $ch = curl_init($url);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_POSTFIELDS, $resp);
+curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($resp));
 curl_setopt($ch, CURLOPT_HTTPHEADER, $sendheaders);
 curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 $result = curl_exec($ch);
