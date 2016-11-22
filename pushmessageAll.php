@@ -8,7 +8,7 @@ $arr_data = array();
 foreach($obj as $rs) {
   array_push($arr_data, $rs["userId"]); 
 }
-
+//var_dump($arr_data);
 $jsondata = json_encode($arr_data);
 //var_dump($jsondata);
 
@@ -16,11 +16,17 @@ $messages = [
 				'type' => 'text',
 				'text' => "Hi.."
 			];
+     
 $data = [
-	'to' => $jsondata,
-	'messages' => [$messages],
+	'to' => ["Uc23982bf348aa387c2b73bcb2051a709","U9064a2310b6a52cdbb0682912ba6179c"],
+	'messages' => [$messages]
 ];
+ 
+//var_dump($data);
 $post = json_encode($data);
+//var_dump($post);
+
+  
 $headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
 
 $ch = curl_init($url);
@@ -34,4 +40,4 @@ curl_close($ch);
 //$ch_result = json_decode($result, true);
 echo $result;
 
-     
+ 
