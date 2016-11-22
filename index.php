@@ -111,7 +111,9 @@ body{
 <body> 
 
 <div class="container">
-  <button onclick="sendMsgAllUser()">send all</button> </br>
+  <p>
+  <button onclick="sendMsgAllUser()">send all</button>
+  </p>
 	<ul class="tabs">
 		<li class="tab-link current" data-tab="tab-1">User Follow</li>
 		<li class="tab-link" data-tab="tab-2">Room</li>
