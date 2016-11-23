@@ -1,23 +1,17 @@
-<?php
-// Get POST body content
-$content = file_get_contents('php://input');
-// Parse JSON
-$events = json_decode($content, true); 
-// Validate parsed JSON data
-if (!is_null($events['events'])) {
-	// Loop through each event 
-  $data_event = $events['events'][0];  
+<?php 
 
-      $replyToken = $data_event['replyToken'];
-       $text = $data_event['message']['text'];
+$content = file_get_contents('php://input');
+$events = json_decode($content, true);
+if (!is_null($events['events'])) {
+  foreach ($events['events'] as $event) {
+      $replyToken = $event['replyToken']; 
       $messages = [        
             'type' => 'text',
-    				'text' => $text
-    			];
+    				'text' => json_encode($event)
+    	];
           
-          replyMessage($replyToken, $messages);      
-      
- 
+      replyMessage($replyToken, $messages);
+  }
 }
 
 function replyMessage($replyToken, $data_messages) {
@@ -25,7 +19,7 @@ function replyMessage($replyToken, $data_messages) {
       $url = 'https://api.line.me/v2/bot/message/reply';
       $data = [
         				'replyToken' => $replyToken,
-        				'messages' => [$data_messages],
+        				'messages' => [$data_messages]
         			];
       $post = json_encode($data);
 			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
@@ -39,5 +33,7 @@ function replyMessage($replyToken, $data_messages) {
 			$result = curl_exec($ch);
 			curl_close($ch);
 
-			echo $result . "\r\n";    
-}
+			echo $result;    
+} 
+
+?>
