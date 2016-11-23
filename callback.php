@@ -15,7 +15,7 @@ if (!is_null($events['events'])) {
     			];
           
           replyMessage($replyToken, $messages);      
-      
+                                                                                                                                                                                            e
   } 
 }
 
