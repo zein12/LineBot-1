@@ -5,11 +5,11 @@ $content = file_get_contents('php://input');
 $events = json_decode($content, true); 
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
-  //$url = 'https://api.line.me/v2/bot/message/reply';
-	// Loop through each event  
-	foreach ($events['events'] as $event) {
-      $replyToken = $event['replyToken'];
-      $text = $event['message']['text']; 
+	// Loop through each event 
+  $data_event = $events['events'][0];  
+
+      $replyToken = $data_event['replyToken'];
+       $text = $data_event['message']['text'];
       $messages = [        
             'type' => 'text',
     				'text' => $text
@@ -17,7 +17,7 @@ if (!is_null($events['events'])) {
           
           replyMessage($replyToken, $messages);      
       
-  } 
+ 
 }
 
 function replyMessage($replyToken, $data_messages) {
