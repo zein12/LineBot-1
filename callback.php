@@ -6,13 +6,13 @@ $events = json_decode($content, true);
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
   //$url = 'https://api.line.me/v2/bot/message/reply';
-	// Loop through each event  
+	// Loop through each event 
+ 
 	foreach ($events['events'] as $event) {
       $replyToken = $event['replyToken']; 
-      $text = $event['message']['text'];
       $messages = [        
             'type' => 'text',
-    				'text' => $text." ".json_encode($events)
+    				'text' => json_encode($event['message'])
     			];
           
           replyMessage($replyToken, $messages);      
