@@ -149,16 +149,8 @@ if (!is_null($events['events'])) {
           replyMessage($replyToken, $messages);
           */
           
-      // leave
-      } else if($event['type'] == 'leave') {
-        $messages = [        
-            'type' => 'text',
-    				'text' => json_encode($events)
-    			];
-          
-          replyMessage($replyToken, $messages);
-      }       
-      
+ 
+      } 
   }
 }
 
