@@ -74,6 +74,12 @@ if (!is_null($events['events'])) {
                     'stickerId' => "183"            
             			];
                   break;
+              case "location":
+                  $messages = [        
+                        'type' => 'text',
+                				'text' => 'ฉันติดธุระ ไม่น่าจะไปได้นะ'    
+                			]; 
+                  break;
               default:
                   $messages = [
             				'type' => 'sticker',
