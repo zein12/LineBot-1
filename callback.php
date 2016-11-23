@@ -11,7 +11,7 @@ if (!is_null($events['events'])) {
       $replyToken = $event['replyToken']; 
       $messages = [        
             'type' => 'text',
-    				'text' => $event['message']['text']." ".json_encode($events)
+    				'text' => json_encode($events)
     			];
           
           replyMessage($replyToken, $messages);      
