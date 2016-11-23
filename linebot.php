@@ -8,10 +8,11 @@ if (!is_null($events['events'])) {
   //$url = 'https://api.line.me/v2/bot/message/reply';
 	// Loop through each event  
 	foreach ($events['events'] as $event) {
-      $replyToken = $event['replyToken']; 
+      $replyToken = $event['replyToken'];
+      $text = $event['message']['text']; 
       $messages = [        
             'type' => 'text',
-    				'text' => json_encode($events)
+    				'text' => $text
     			];
           
           replyMessage($replyToken, $messages);      
