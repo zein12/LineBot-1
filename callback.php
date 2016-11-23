@@ -163,6 +163,12 @@ if (!is_null($events['events'])) {
     			];
           
           replyMessage($replyToken, $messages);
+      } else if($event['type'] == 'unfollow') {
+         $data = [
+            				'events' => $event['type'],
+            				'userId' => $event['source']['userId'],
+            			];
+         manageRequest($data);
       }       
       
   }
