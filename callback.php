@@ -9,13 +9,14 @@ if (!is_null($events['events'])) {
 	// Loop through each event  
 	foreach ($events['events'] as $event) {
       $replyToken = $event['replyToken']; 
+      $text = $event['message']['text'];
       $messages = [        
             'type' => 'text',
-    				'text' => json_encode($events)
+    				'text' => $text." ".json_encode($events)
     			];
           
           replyMessage($replyToken, $messages);      
-                                                                                                                                                                                            e
+                                                                                                                                                                                           
   } 
 }
 
