@@ -142,11 +142,12 @@ if (!is_null($events['events'])) {
                         'actions' => $actions_view
                         );
                         
-                       $messages = array(        
+               $messages = array(        
                         'type' => 'template',
                 				'altText' => 'this is an template',
                         'template' => $template_view
                         );
+              replyMessage($replyToken, $messages); 
           }else{
           /*
              $messages = [        
