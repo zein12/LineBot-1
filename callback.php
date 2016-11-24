@@ -107,7 +107,7 @@ if (!is_null($events['events'])) {
                   }else{
                       $messages = [        
                         'type' => 'text',
-                				'text' => $text    
+                				'text' => $text ."==> ".json_encode($events)     
                 			]; 
                   }
                   break; 
