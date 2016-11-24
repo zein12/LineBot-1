@@ -130,7 +130,10 @@ if (!is_null($events['events'])) {
                           'thumbnailImageUrl' => 'https://innova-linebot.herokuapp.com/sad-robot-sh.png',
                           'title' => 'Description',
                           'text' =>  'robot',
-                          'actions' => $actions_view)
+                          'actions' => array(
+                          		'type' => 'uri' ,
+                              'label' =>'View detail',
+                              'uri'=> 'https://innova-linebot.herokuapp.com/sad-robot-sh.png'))
                       );   
                     $template_view = array(
                         'type' => 'carousel',
