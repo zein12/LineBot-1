@@ -44,9 +44,14 @@ if (!is_null($events['events'])) {
                   $text = $event['message']['text'];
                   if($text == 'shop'){
                       $actions_view = array(
+                        array(
                       		'type' => 'postback' ,
                           'label' =>'Buy',
-                          'data'=> 'action=buy&itemid=123'
+                          'data'=> 'action=buy&itemid=123'),
+                        array(
+                          'type' => 'postback' ,
+                          'label' =>'Cancel',
+                          'data'=> 'action=cancel&itemid=123')
                       	);
                        $template_view = [
                         'type' => 'buttons',
