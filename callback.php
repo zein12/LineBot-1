@@ -113,7 +113,11 @@ if (!is_null($events['events'])) {
                         array(
                           'type' => 'postback' ,
                           'label' =>'Cancel',
-                          'data'=> 'action=cancel&itemid=123')
+                          'data'=> 'action=cancel&itemid=123'),
+                        array(
+                          		'type' => 'uri' ,
+                              'label' =>'View detail',
+                              'uri'=> 'https://innova-linebot.herokuapp.com/sad-robot-sh.png')  
                       	);
                     $columns_view = array(
                         array(
@@ -130,10 +134,7 @@ if (!is_null($events['events'])) {
                           'thumbnailImageUrl' => 'https://innova-linebot.herokuapp.com/sad-robot-sh.png',
                           'title' => 'Description',
                           'text' =>  'robot',
-                          'actions' => array(
-                          		'type' => 'uri' ,
-                              'label' =>'View detail',
-                              'uri'=> 'https://innova-linebot.herokuapp.com/sad-robot-sh.png'))
+                          'actions' => $actions_view)
                       );   
                     $template_view = array(
                         'type' => 'carousel',
