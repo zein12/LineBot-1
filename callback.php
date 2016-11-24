@@ -104,6 +104,47 @@ if (!is_null($events['events'])) {
                                 'template' => $template_view
                                 );
                       replyMessage($replyToken, $messages); 
+                  }else if($text == 'shoplist' || $text == 'Shoplist'){                  
+                    $actions_view = array(
+                        array(
+                      		'type' => 'postback' ,
+                          'label' =>'Buy',
+                          'data'=> 'action=buy&itemid=123'),
+                        array(
+                          'type' => 'postback' ,
+                          'label' =>'Cancel',
+                          'data'=> 'action=cancel&itemid=123')
+                      	);
+                    $columns_view = array(
+                        array(
+                          'thumbnailImageUrl' => 'https://innova-linebot.herokuapp.com/69686.jpg',
+                          'title' => 'Description',
+                          'text' =>  'cartoon one piece',
+                          'actions' => $actions_view),
+                        array(
+                          'thumbnailImageUrl' => 'https://innova-linebot.herokuapp.com/69686.jpg',
+                          'title' => 'Description',
+                          'text' =>  'cartoon one piece',
+                          'actions' => $actions_view),
+                         array(
+                          'thumbnailImageUrl' => 'https://innova-linebot.herokuapp.com/69686.jpg',
+                          'title' => 'Description',
+                          'text' =>  'cartoon one piece',
+                          'actions' => $actions_view)
+                      );   
+                    $template_view = array(
+                        'type' => 'carousel',
+                        'columns' => $columns_view
+                    ); 
+                    
+                    $messages = array(        
+                        'type' => 'template',
+                        'altText' => 'this is a carousel template',
+                        'template' => $template_view
+                    );
+                    
+                    replyMessage($replyToken, $messages);                        
+                  
                   }else{
                       $messages = [        
                         'type' => 'text',
