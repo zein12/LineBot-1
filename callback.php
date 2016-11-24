@@ -58,7 +58,7 @@ if (!is_null($events['events'])) {
                         'thumbnailImageUrl' => 'https://innova-linebot.herokuapp.com/69686.jpg',
                         'title' => 'Description',
                         'text' =>  'cartoon one piece',
-                        'actions' => [$actions_view]
+                        'actions' => json_encode($actions_view)
                         ];
                        $messages = [        
                         'type' => 'template',
