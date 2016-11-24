@@ -84,11 +84,11 @@ if (!is_null($events['events'])) {
                   }else  if($text == 'confirm' || $text == 'Confirm'){
                          $actions_view = array(
                                 array(
-                              		'type' => 'postback' ,
+                              		'type' => 'message' ,
                                   'label' =>'Yes',
                                   'text'=> 'action=yes&itemid=123'),
                                 array(
-                                  'type' => 'postback' ,
+                                  'type' => 'message' ,
                                   'label' =>'No',
                                   'text'=> 'action=no&itemid=123')
                               	);
