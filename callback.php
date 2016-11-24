@@ -53,18 +53,34 @@ if (!is_null($events['events'])) {
                           'label' =>'Cancel',
                           'data'=> 'action=cancel&itemid=123')
                       	);
+                        /*
                        $template_view = [
                         'type' => 'buttons',
                         'thumbnailImageUrl' => 'https://innova-linebot.herokuapp.com/69686.jpg',
                         'title' => 'Description',
                         'text' =>  'cartoon one piece',
-                        'actions' => json_encode($actions_view)
+                        'actions' => [$actions_view]
                         ];
                        $messages = [        
                         'type' => 'template',
                 				'altText' => 'this is an template',
                         'template' => $template_view
                         ];
+                        */
+                        
+                        $template_view = array(
+                        'type' => 'buttons',
+                        'thumbnailImageUrl' => 'https://innova-linebot.herokuapp.com/69686.jpg',
+                        'title' => 'Description',
+                        'text' =>  'cartoon one piece',
+                        'actions' => $actions_view
+                        );
+                        
+                       $messages = array(        
+                        'type' => 'template',
+                				'altText' => 'this is an template',
+                        'template' => $template_view
+                        );
                   }else{
                       $messages = [        
                         'type' => 'text',
