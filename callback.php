@@ -117,19 +117,19 @@ if (!is_null($events['events'])) {
                       	);
                     $columns_view = array(
                         array(
-                          'thumbnailImageUrl' => 'https://innova-linebot.herokuapp.com/69686.jpg',
+                          'thumbnailImageUrl' => 'https://innova-linebot.herokuapp.com/avatar01.png',
                           'title' => 'Description',
                           'text' =>  'cartoon one piece',
                           'actions' => $actions_view),
                         array(
-                          'thumbnailImageUrl' => 'https://innova-linebot.herokuapp.com/69686.jpg',
+                          'thumbnailImageUrl' => 'https://innova-linebot.herokuapp.com/robot.png',
                           'title' => 'Description',
-                          'text' =>  'cartoon one piece',
+                          'text' =>  'robot',
                           'actions' => $actions_view),
                          array(
-                          'thumbnailImageUrl' => 'https://innova-linebot.herokuapp.com/69686.jpg',
+                          'thumbnailImageUrl' => 'https://innova-linebot.herokuapp.com/sad-robot-sh.png',
                           'title' => 'Description',
-                          'text' =>  'cartoon one piece',
+                          'text' =>  'robot',
                           'actions' => $actions_view)
                       );   
                     $template_view = array(
