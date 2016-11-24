@@ -107,7 +107,7 @@ if (!is_null($events['events'])) {
                   }else{
                       $messages = [        
                         'type' => 'text',
-                				'text' => $text ."==> ".json_encode($events)     
+                				'text' => $text   
                 			]; 
                   }
                   break; 
@@ -147,51 +147,14 @@ if (!is_null($events['events'])) {
       "timestamp":1479374241667,
       "postback":{"data":"action=buy&itemid=123"}}]} 
       */
-          if (strpos($event['postback']['data'], 'buy') !== false) {
-              //echo 'true';
-              /*
-              $actions_view = array(
-                        array(
-                      		'type' => 'postback' ,
-                          'label' =>'Yes',
-                          'text'=> 'action=yes&itemid=123'),
-                        array(
-                          'type' => 'postback' ,
-                          'label' =>'No',
-                          'text'=> 'action=no&itemid=123')
-                      	);
-               $template_view = array(
-                        'type' => 'confirm',
-                        'text' =>  'Are you sure?',
-                        'actions' => $actions_view
-                        );
-                        
-               $messages = array(        
-                        'type' => 'template',
-                				'altText' => 'this is an template',
-                        'template' => $template_view
-                        );
-                        */
-                        
-             $messages = [        
-                'type' => 'text',
-        				'text' => 'buy: '.json_encode($events)    
-        			];
-              replyMessage($replyToken, $messages); 
-          }else{
-          /*
-             $messages = [        
-                'type' => 'text',
-        				'text' => $event['postback']['data']    
-        			];
-           */
-            $messages = [        
-                'type' => 'text',
-        				'text' => json_encode($events)   
-        			];
+         
+        $messages = [        
+           'type' => 'text',
+           'text' => $event['postback']['data']    
+        ];
+          
              
-              replyMessage($replyToken, $messages); 
-          }
+        replyMessage($replyToken, $messages);       
           
           
       // join
