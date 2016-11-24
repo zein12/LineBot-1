@@ -42,7 +42,7 @@ if (!is_null($events['events'])) {
           switch ($event['message']['type']) {
               case "text":
                   $text = $event['message']['text'];
-                  if($text == 'shop'){
+                  if($text == 'shop' || $text == 'Shop'){
                       $actions_view = array(
                         array(
                       		'type' => 'postback' ,
@@ -81,6 +81,29 @@ if (!is_null($events['events'])) {
                 				'altText' => 'this is an template',
                         'template' => $template_view
                         );
+                  }else  if($text == 'confirm' || $text == 'Confirm'){
+                         $actions_view = array(
+                                array(
+                              		'type' => 'postback' ,
+                                  'label' =>'Yes',
+                                  'text'=> 'action=yes&itemid=123'),
+                                array(
+                                  'type' => 'postback' ,
+                                  'label' =>'No',
+                                  'text'=> 'action=no&itemid=123')
+                              	);
+                       $template_view = array(
+                                'type' => 'confirm',
+                                'text' =>  'Are you sure?',
+                                'actions' => $actions_view
+                                );
+                                
+                       $messages = array(        
+                                'type' => 'template',
+                        				'altText' => 'this is an template',
+                                'template' => $template_view
+                                );
+                      replyMessage($replyToken, $messages); 
                   }else{
                       $messages = [        
                         'type' => 'text',
@@ -126,6 +149,7 @@ if (!is_null($events['events'])) {
       */
           if (strpos($event['postback']['data'], 'buy') !== false) {
               //echo 'true';
+              /*
               $actions_view = array(
                         array(
                       		'type' => 'postback' ,
@@ -147,6 +171,12 @@ if (!is_null($events['events'])) {
                 				'altText' => 'this is an template',
                         'template' => $template_view
                         );
+                        */
+                        
+             $messages = [        
+                'type' => 'text',
+        				'text' => 'buy: '.json_encode($events)    
+        			];
               replyMessage($replyToken, $messages); 
           }else{
           /*
