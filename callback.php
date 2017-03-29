@@ -166,7 +166,7 @@ if (!is_null($events['events'])) {
               case "location":
                   $messages = [        
                         'type' => 'text',
-                				'text' => 'ฉันติดธุระ ไม่น่าจะไปได้นะ'    
+                				'text' => 'Aku sibuk tidak mungkin untuk mendapatkannya.'    
                 			]; 
                   break;
               default:
@@ -266,7 +266,7 @@ if (!is_null($events['events'])) {
 }
 
 function replyMessage($replyToken, $data_messages) {
-      $access_token = '/uRUSV5cXcYdnAjK7n16+BE9EavYwZay0E3zYt340wH+E3J95IwzSPT++IDf6tHTxHlDW1Az0IVwi7pqjfIAza+J0qRA+7+1nzAIZN1JEx1Ly8KSNXXY1pKm8VFpWLbdNy3iwH6cH4fchucMF16kNAdB04t89/1O/w1cDnyilFU='; 
+      $access_token = '3/cEBpOR0mjAMUtnHKrSrx3N6FnMVNPYfXBIwMO6HNGaljxuxTxZz2fGrmZYFwqfV3dvAWMa7FEGrmOONfbZ7or1wxYgpjbtFMS0Mkk+RftjvYSrUpThxAHGiivf2M662z2zM5P8BSKby0dJiBG3GQdB04t89/1O/w1cDnyilFU='; 
       $url = 'https://api.line.me/v2/bot/message/reply';
       $data = [
         				'replyToken' => $replyToken,
